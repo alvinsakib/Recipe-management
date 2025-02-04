@@ -1,0 +1,22 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h1>Edit Recipe</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% if errors.title %}
+    <p style="color:red;">{{ errors.title }}</p>
+    {% endif %}
+    <label for="id_title">Title:</label><br>
+    <input type="text" name="title" id="id_title" value="{{ recipe.title }}"><br><br>
+
+    <label for="id_ingredients">Ingredients:</label><br>
+    <textarea name="ingredients" id="id_ingredients">{{ recipe.ingredients }}</textarea><br><br>
+
+    <label for="id_instructions">Instructions:</label><br>
+    <textarea name="instructions" id="id_instructions">{{ recipe.instructions }}</textarea><br><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}
